@@ -1,0 +1,53 @@
+<!--
+  Generated template for the SingleDevice page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{deviceName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-grid *ngIf="isConnected">
+    <ion-list >
+      <ion-item>
+        <ion-range [(ngModel)]="red" color="red" pin="true" (ionChange)="updateColors()" debounce=100></ion-range>
+      </ion-item>
+      <ion-item>
+        <ion-range [(ngModel)]="green" color="green" pin="true" (ionChange)="updateColors()" debounce=100></ion-range>
+      </ion-item>
+      <ion-item>
+        <ion-range [(ngModel)]="blue" color="blue" pin="true" (ionChange)="updateColors()" debounce=100></ion-range>
+      </ion-item>
+    </ion-list>
+
+    <ion-card [ngStyle]="{'background-color':hexcolor}">
+      <ion-card-header>
+        Color
+      </ion-card-header>
+      <ion-card-content>
+        {{red}},{{green}},{{blue}}
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+
+    <ion-grid *ngIf="!isConnected">
+      <ion-row>
+        <ion-col width-12>you are not connected</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-12>
+          <button ion-button clear (click)="connect(deviceID)">
+            reconnect
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+</ion-content>

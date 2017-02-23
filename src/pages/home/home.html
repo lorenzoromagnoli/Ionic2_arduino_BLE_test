@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title (click)="goToSecondPage()">
+      Scan Bluetooth
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="refresh" (click)="scanDevices()"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-grid *ngIf="!devices.length">
+    <ion-row>
+      <ion-col width-12>No devices founds</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-12>
+        <button ion-button clear (click)="scanDevices()">
+          scan for devices
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card *ngFor="let device of devices">
+    <ion-card-header>
+      {{device.name}}
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          {{device.id}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="ion-connection-bars"></ion-icon>
+            <div>{{device.rssi}}</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="openDevicePage(device.id)">
+            <ion-icon name="ion-link"></ion-icon>
+            <div>connect</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
