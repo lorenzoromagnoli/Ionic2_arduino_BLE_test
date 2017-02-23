@@ -11,3 +11,6 @@ Attached you can also find an Arduino sketch for an Arduino101 acting as a BLE s
 
 <img src="images/page1.png" width="300">
 <img src="images/page2.png" width="300">
+
+If you have troubles trying to reproduce this, feel free to open me an issue. 
+Maybe would write an extensive tutorial later on.
